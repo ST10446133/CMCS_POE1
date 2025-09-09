@@ -1,0 +1,35 @@
+Contract Monthly Claim System (CMCS) – PROG6212
+Project Overview:
+This project is a Portfolio of Evidence (PoE) for PROG6212, focusing on developing a practical .NET web-based application called the Contract Monthly Claim System (CMCS). The system streamlines the process of submitting and approving monthly claims for Independent Contractor (IC) lecturers.
+Roles:
+Lecturer: Submits claims, uploads documents, and monitors claim status.
+Programme Coordinator (PC): Reviews claims and can approve or return claims.
+Academic Manager: Gives the final approval or rejection of claims.
+
+Workflow:
+Claims move through the following process:
+Lecturer → Programme Coordinator → Academic Manager, with clear status updates at each step.
+Project Structure:
+Documentation.pdf – Contains design choices, roles, workflow, database structure, GUI layout, and assumptions.
+UML_Class_Diagram.png – Database UML diagram showing the relationships between Lecturer, Claim, Programme Coordinator, Academic Manager, Attachments, and Approvals.
+CMCS_Prototype.pdf – Mockups and layout of the application screens including login, dashboards, and claim submission form.
+Project_Plan.pdf – Tasks, dependencies, and timeline for the project.
+README.md – This file.
+ 
+Design Choices / Technology:
+Platform: Visual Studio 2022 using ASP.NET Core MVC (browser accessible, easy to deploy). WPF could be used for a desktop version.
+Architecture: Layered design: Presentation → Services → Domain → Data.
+Assumptions & Constraints:
+  • One claim per lecturer per month/year
+  • Maximum attachment size: 10MB
+  • Calculations based on HourlyRate
+  • Roles must follow the workflow order
+How to View:
+Open the PDFs to see project documentation, GUI/UI design, and project plan.
+View the UML diagram in UML-Class-Diagram.png.
+The README provides an overview of the project and structure.
+Future Work:
+Implement the CMCS web application using ASP.NET Core MVC.
+Connect the database and implement claim submission and approval workflows.
+Develop a functional GUI based on the current mockups and design.
+
