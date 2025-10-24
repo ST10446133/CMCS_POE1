@@ -1,0 +1,76 @@
+﻿<Window x:Class="POE_CMCS.LecturerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Lecturer Dashboard"
+        Height="600" Width="850"
+        WindowStartupLocation="CenterScreen"
+        Background="#FFFFFF">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- LEFT SIDE: Submit Claim -->
+        <StackPanel Grid.Column="0" Margin="10">
+            <TextBlock Text="Submit Monthly Claim" 
+                       FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <Label Content="Hours Worked"/>
+            <TextBox x:Name="HoursWorkedTextBox" Width="200" Height="25"/>
+
+            <Label Content="Hourly Rate" Margin="0,8,0,0"/>
+            <TextBox x:Name="HourlyRateTextBox" Width="200" Height="25"/>
+
+            <Label Content="Notes" Margin="0,8,0,0"/>
+            <TextBox x:Name="NotesTextBox" Width="200" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <Button Content="Upload Supporting Document" 
+                    Width="220" Margin="0,10,0,0"
+                    Click="UploadFile_Click"/>
+            <TextBlock x:Name="FileNameTextBlock" 
+                       Foreground="Gray" FontSize="12" Margin="0,5,0,0"/>
+
+            <Button Content="Submit Claim" 
+                    Width="150" Height="35" Margin="0,15,0,0"
+                    Click="SubmitClaim_Click"/>
+            <TextBlock x:Name="SubmitStatusText"
+                       Foreground="Green" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- RIGHT SIDE: Track Claims -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Track Claim Status" 
+                       FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <DataGrid x:Name="ClaimsDataGrid"
+          AutoGenerateColumns="False"
+          CanUserAddRows="False"
+          Height="400" Width="480"
+          Margin="0,10,0,0"
+          IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Claim ID" Binding="{Binding ClaimId}" Width="*"/>
+                    <DataGridTextColumn Header="Hours" Binding="{Binding HoursWorked}" Width="*"/>
+                    <DataGridTextColumn Header="Rate" Binding="{Binding HourlyRate}" Width="*"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding DateSubmitted}" Width="*"/>
+                    <DataGridTextColumn Header="File Name" Binding="{Binding FileName}" Width="*"/>
+                    <DataGridTemplateColumn Header="Open PDF" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Open PDF" Click="OpenPDF_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+            <Button Content="Refresh Claims" 
+                    Width="150" Height="30" Margin="0,10,0,0"
+                    Click="RefreshClaims_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
