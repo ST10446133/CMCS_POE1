@@ -1,0 +1,2 @@
+ALTER TABLE Claims
+ADD [Supporting Doc] VARBINARY(MAX) NULL;
