@@ -1,0 +1,41 @@
+﻿<Window x:Class="POE_CMCS.AcademicManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Academic Manager Dashboard" Height="520" Width="850"
+        Background="#f7f7f7" WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="15">
+        <TextBlock Text="Academic Manager - Claim Review &amp; Final Approval"
+                   FontSize="22" FontWeight="Bold" Margin="0,0,0,20" />
+
+        <DataGrid x:Name="ClaimsDataGrid" AutoGenerateColumns="False" 
+                  Margin="0,40,0,70" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Claim ID" Binding="{Binding ClaimId}" Width="Auto"/>
+                <DataGridTextColumn Header="Lecturer" Binding="{Binding LecturerName}" Width="*"/>
+                <DataGridTextColumn Header="Hours Worked" Binding="{Binding HoursWorked}" Width="*"/>
+                <DataGridTextColumn Header="Hourly Rate" Binding="{Binding HourlyRate}" Width="*"/>
+                <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="*"/>
+
+                <!-- Button to open uploaded PDF -->
+                <DataGridTemplateColumn Header="Supporting Document" Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Open PDF" Click="OpenPDF_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                <DataGridTextColumn Header="Date Submitted" Binding="{Binding DateSubmitted}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
+            <Button x:Name="FinalApproveButton" Content="Final Approve (Payment)" Width="180" Height="35" Background="#FFB6C1" Click="FinalApproveButton_Click"/>
+            <Button x:Name="RejectButton" Content="Reject" Width="130" Height="35" Margin="10" Background="Salmon" Click="RejectButton_Click"/>
+            <Button x:Name="RefreshButton" Content="Refresh" Width="130" Height="35" Margin="10" Background="LightGray" Click="RefreshButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
